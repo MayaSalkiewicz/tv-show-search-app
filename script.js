@@ -1,4 +1,5 @@
 const form = document.querySelector("#searchForm");
+const resetBtn = document.querySelector("#reset");
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -17,3 +18,12 @@ const printImage = (shows) => {
     }
   }
 };
+
+const deleteImgs = function () {
+  const imgs = document.querySelectorAll("img");
+  for (let img of imgs) {
+    img.remove();
+  }
+};
+
+resetBtn.addEventListener("click", deleteImgs);
