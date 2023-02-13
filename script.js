@@ -1,5 +1,6 @@
 const form = document.querySelector("#searchForm");
 const resetBtn = document.querySelector("#reset");
+const input = document.querySelector("input");
 
 form.addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -7,6 +8,8 @@ form.addEventListener("submit", async function (e) {
   const config = { params: { q: searchTerm } };
   const res = await axios.get(`https://api.tvmaze.com/search/shows`, config);
   printImage(res.data);
+  console.log(res.data);
+  input.value = "";
 });
 
 const printImage = (shows) => {
@@ -27,3 +30,5 @@ const deleteImgs = function () {
 };
 
 resetBtn.addEventListener("click", deleteImgs);
+
+input.addEventListener("change", deleteImgs);
